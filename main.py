@@ -1,8 +1,12 @@
 import json
+import random
+
+shotTypes = ["serve", "clear", "lift", "drop", "net", "smash", "drive"]
 
 class Game:
     def __init__(self, opp, me = "Joe"):
         self.opp = opp
+        self.me = me
         self.score = [0,0]
         self.rallies = []
 
@@ -23,18 +27,31 @@ class Rally:
         self.shots.append(shot)
 
 class Shot:
-    def __init__(self, type, quality, isOut = False, isFault = False):
+    def __init__(self, type, quality, isMyShot, isOut = False, isFault = False):
         self.type = type
+        self.isMyShot = isMyShot
         self.quality = quality #number value 1-5?
         self.isOut = isOut
         self.isFault = isFault
 
 game1 = Game("grace")
 for i in range(10):
-    x = Rally(True, True)
+    isMyShot = True
+    x = Rally(isMyShot, True)
+    isMyShot = not isMyShot
     game1.addRally(x)
-    for s in range(4):
-        x.addShot(Shot("Slice", 4))
+    for s in range(random.randint(3,7)):
+        x.addShot(Shot(shotTypes[random.randint(1,len(shotTypes)-1)], random.randint(0,5), isMyShot))
+        isMyShot = not isMyShot
+    endRally = random.choice(["out", "fault", "winner"])
+    if endRally == "out":
+        x.addShot(Shot(shotTypes[random.randint(1,len(shotTypes)-1)], random.randint(0,5), isMyShot, isOut=True))
+    elif endRally == "fault":
+        x.addShot(Shot(shotTypes[random.randint(1,len(shotTypes)-1)], random.randint(0,5), isMyShot, isFault=True))
+    else:
+        x.addShot(Shot(shotTypes[random.randint(1,len(shotTypes)-1)], random.randint(0,5), isMyShot))
+
+    print("Rally added")
     
 class GameEncoder(json.JSONEncoder):
     def default(self, obj):
