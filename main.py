@@ -51,6 +51,7 @@ def generateGame():
         game.addRally(x)
         #service
         x.addShot(Shot("serve", random.randint(0,5), isMyShot, False, False, [300,305], [random.randint(670, 1340),random.randint(0, 610)]))
+        isMyShot = not isMyShot
         for s in range(random.randint(5,7)):
             lastShotCoord = x.shots[s].endCoord
             x.addShot(generateMidGameShot(isMyShot, lastShotCoord))
@@ -67,7 +68,6 @@ class GameEncoder(json.JSONEncoder):
     def default(self, obj):
         return obj.__dict__
 
-y = json.dumps(generateGame(), cls=GameEncoder, indent=4)
-
-# The result is a JSON string
-print(y)
+outputFilePath = "shotdata.json"
+with open(outputFilePath, 'w') as json_file:
+    json.dump(generateGame(), json_file, cls=GameEncoder, indent=4)

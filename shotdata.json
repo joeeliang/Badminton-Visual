@@ -1,0 +1,136 @@
+{
+    "opp": "grace",
+    "me": "Joe",
+    "score": [
+        1,
+        0
+    ],
+    "rallies": [
+        {
+            "serverIsMe": true,
+            "winnerIsMe": true,
+            "shots": [
+                {
+                    "type": "serve",
+                    "isMyShot": true,
+                    "quality": 3,
+                    "isOut": false,
+                    "isFault": false,
+                    "startCoord": [
+                        300,
+                        305
+                    ],
+                    "endCoord": [
+                        1174,
+                        210
+                    ]
+                },
+                {
+                    "type": "net",
+                    "isMyShot": false,
+                    "quality": 2,
+                    "isOut": false,
+                    "isFault": false,
+                    "startCoord": [
+                        1174,
+                        210
+                    ],
+                    "endCoord": [
+                        480,
+                        373
+                    ]
+                },
+                {
+                    "type": "drive",
+                    "isMyShot": true,
+                    "quality": 5,
+                    "isOut": false,
+                    "isFault": false,
+                    "startCoord": [
+                        480,
+                        373
+                    ],
+                    "endCoord": [
+                        851,
+                        280
+                    ]
+                },
+                {
+                    "type": "clear",
+                    "isMyShot": false,
+                    "quality": 4,
+                    "isOut": false,
+                    "isFault": false,
+                    "startCoord": [
+                        851,
+                        280
+                    ],
+                    "endCoord": [
+                        344,
+                        492
+                    ]
+                },
+                {
+                    "type": "net",
+                    "isMyShot": true,
+                    "quality": 0,
+                    "isOut": false,
+                    "isFault": false,
+                    "startCoord": [
+                        344,
+                        492
+                    ],
+                    "endCoord": [
+                        761,
+                        575
+                    ]
+                },
+                {
+                    "type": "clear",
+                    "isMyShot": false,
+                    "quality": 3,
+                    "isOut": false,
+                    "isFault": false,
+                    "startCoord": [
+                        761,
+                        575
+                    ],
+                    "endCoord": [
+                        242,
+                        87
+                    ]
+                },
+                {
+                    "type": "smash",
+                    "isMyShot": true,
+                    "quality": 1,
+                    "isOut": false,
+                    "isFault": false,
+                    "startCoord": [
+                        242,
+                        87
+                    ],
+                    "endCoord": [
+                        778,
+                        310
+                    ]
+                },
+                {
+                    "type": "smash",
+                    "isMyShot": false,
+                    "quality": 5,
+                    "isOut": false,
+                    "isFault": true,
+                    "startCoord": [
+                        778,
+                        310
+                    ],
+                    "endCoord": [
+                        146,
+                        447
+                    ]
+                }
+            ]
+        }
+    ]
+}
