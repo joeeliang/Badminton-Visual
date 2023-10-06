@@ -34,31 +34,33 @@ class Shot:
         self.isOut = isOut
         self.isFault = isFault
 
-game1 = Game("grace")
-for i in range(10):
-    isMyShot = True
-    x = Rally(isMyShot, True)
-    isMyShot = not isMyShot
-    game1.addRally(x)
-    for s in range(random.randint(3,7)):
-        x.addShot(Shot(shotTypes[random.randint(1,len(shotTypes)-1)], random.randint(0,5), isMyShot))
+def generateGame():
+    game = Game("grace")
+    for i in range(10):
+        isMyShot = True
+        x = Rally(isMyShot, True)
         isMyShot = not isMyShot
-    endRally = random.choice(["out", "fault", "winner"])
-    if endRally == "out":
-        x.addShot(Shot(shotTypes[random.randint(1,len(shotTypes)-1)], random.randint(0,5), isMyShot, isOut=True))
-    elif endRally == "fault":
-        x.addShot(Shot(shotTypes[random.randint(1,len(shotTypes)-1)], random.randint(0,5), isMyShot, isFault=True))
-    else:
-        x.addShot(Shot(shotTypes[random.randint(1,len(shotTypes)-1)], random.randint(0,5), isMyShot))
+        game.addRally(x)
+        for s in range(random.randint(3,7)):
+            x.addShot(Shot(shotTypes[random.randint(1,len(shotTypes)-1)], random.randint(0,5), isMyShot))
+            isMyShot = not isMyShot
+        endRally = random.choice(["out", "fault", "winner"])
+        if endRally == "out":
+            x.addShot(Shot(shotTypes[random.randint(1,len(shotTypes)-1)], random.randint(0,5), isMyShot, isOut=True))
+        elif endRally == "fault":
+            x.addShot(Shot(shotTypes[random.randint(1,len(shotTypes)-1)], random.randint(0,5), isMyShot, isFault=True))
+        else:
+            x.addShot(Shot(shotTypes[random.randint(1,len(shotTypes)-1)], random.randint(0,5), isMyShot))
 
-    print("Rally added")
-    
+        print("Rally added")
+    return game
+        
+
 class GameEncoder(json.JSONEncoder):
     def default(self, obj):
         return obj.__dict__
-        
 
-y = json.dumps(game1, cls=GameEncoder, indent=4)
+y = json.dumps(generateGame(), cls=GameEncoder, indent=4)
 
 # The result is a JSON string
 print(y)
